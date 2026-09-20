@@ -751,9 +751,9 @@ def spin_wheel():
     # ------------------------------------------------------------
 
     if (
-        len(st.session_state.team1_squad) >= 15
+        len(st.session_state.team1_squad) >= 11
         and
-        len(st.session_state.team2_squad) >= 15
+        len(st.session_state.team2_squad) >= 11
     ):
         st.session_state.auction_finished = True
         return
