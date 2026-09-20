@@ -750,14 +750,6 @@ def spin_wheel():
     # Auction ends only when BOTH teams have 15.
     # ------------------------------------------------------------
 
-    if (
-        len(st.session_state.team1_squad) >= 11
-        and
-        len(st.session_state.team2_squad) >= 11
-    ):
-        st.session_state.auction_finished = True
-        return
-
     # ------------------------------------------------------------
     # Get next player from the randomized auction order.
     # ------------------------------------------------------------
