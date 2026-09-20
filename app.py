@@ -2589,7 +2589,7 @@ def show_finished_auction():
     team1 = st.session_state.team1_squad
     team2 = st.session_state.team2_squad
 
-    if len(team1) != 15 or len(team2) != 15:
+    if len(team1) < 11 or len(team2) < 11:
         st.error(
             f"Auction cannot finish yet. "
             f"Team 1: {len(team1)}/15 | "
