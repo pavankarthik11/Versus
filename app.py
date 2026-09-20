@@ -750,6 +750,14 @@ def spin_wheel():
     # Auction ends only when BOTH teams have 15.
     # ------------------------------------------------------------
 
+    if (
+        len(st.session_state.team1_squad) >= 11
+        and
+        len(st.session_state.team2_squad) >= 11
+    ):
+        st.session_state.auction_finished = True
+        return
+
     # ------------------------------------------------------------
     # Get next player from the randomized auction order.
     # ------------------------------------------------------------
@@ -1872,6 +1880,29 @@ def display_match_result(
         hide_index=True
     )
 
+    st.subheader(f"🟠 {name2} Bowling")
+    st.dataframe(
+        result2["bowling"],
+        use_container_width=True,
+        hide_index=True
+    )
+
+    st.divider()
+
+    st.header(f"🟠 {name2} Batting")
+    st.dataframe(
+        result2["scorecard"],
+        use_container_width=True,
+        hide_index=True
+    )
+
+    st.subheader(f"🔵 {name1} Bowling")
+    st.dataframe(
+        result1["bowling"],
+        use_container_width=True,
+        hide_index=True
+    )
+
 
 # ================================================================
 # AUCTION PAGE
@@ -2581,7 +2612,7 @@ def show_finished_auction():
     team1 = st.session_state.team1_squad
     team2 = st.session_state.team2_squad
 
-    if len(team1) < 11 or len(team2) < 11:
+    if len(team1) != 15 or len(team2) != 15:
         st.error(
             f"Auction cannot finish yet. "
             f"Team 1: {len(team1)}/15 | "
